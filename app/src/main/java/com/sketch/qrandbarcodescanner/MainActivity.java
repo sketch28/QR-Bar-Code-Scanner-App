@@ -48,13 +48,11 @@ public class MainActivity extends AppCompatActivity {
             }
             else{
                 //start scanning
-                startActivityForResult(new Intent(MainActivity.this,ScanningActivity.class),SCANNING_REQUEST_CODE);
-            }
+                startScanning();            }
         }
         else {
             //start scanning
-            startActivityForResult(new Intent(MainActivity.this,ScanningActivity.class),SCANNING_REQUEST_CODE);
-        }
+            startScanning();        }
 
     }
 
@@ -63,8 +61,8 @@ public class MainActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if(requestCode == CAMERA_REQUEST_PERMISSION){
             if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                startActivityForResult(new Intent(MainActivity.this,ScanningActivity.class),SCANNING_REQUEST_CODE);
 
+                startScanning();
             }
         }
     }
@@ -77,5 +75,8 @@ public class MainActivity extends AppCompatActivity {
                 button.setText(data.getStringExtra("scanning_result"));
             }
         }
+    }
+    public void startScanning(){
+        startActivityForResult(new Intent(MainActivity.this,ScanningActivity.class),SCANNING_REQUEST_CODE);
     }
 }
